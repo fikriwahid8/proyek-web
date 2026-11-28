@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>To-Do List</title>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #fff; padding: 20px; max-width: 480px; margin: 0 auto; }
+    h1 { color: #4ade80; text-align: center; }
+    input { padding: 10px; font-size: 16px; width: 65%; }
+    button { padding: 10px 14px; font-size: 16px; }
+    ul { list-style: none; padding: 0; }
+    li { background: #222; margin: 8px 0; padding: 10px; display: flex; justify-content: space-between; align-items: center; }
+  </style>
+</head>
+<body>
+  <h1>To-Do List</h1>
+  <input id="tugas" placeholder="Tulis tugas...">
+  <button onclick="tambah()">Tambah</button>
+  <ul id="daftar"></ul>
+  <script>
+    let tugas = [];
+    function tampil() {
+      const daftar = document.getElementById("daftar");
+      daftar.innerHTML = "";
+      for (let i = 0; i < tugas.length; i++) {
+        const li = document.createElement("li");
+        li.textContent = tugas[i];
+        const tombol = document.createElement("button");
+        tombol.textContent = "Hapus";
+        tombol.onclick = function () { hapus(i); };
+        li.appendChild(tombol);
+        daftar.appendChild(li);
+      }
+    }
+    function tambah() {
+      const input = document.getElementById("tugas");
+      if (input.value.trim() === "") { return; }
+      tugas.push(input.value.trim());
+      input.value = "";
+      tampil();
+    }
+    function hapus(i) {
+      tugas.splice(i, 1);
+      tampil();
+    }
+  </script>
+</body>
+</html>
