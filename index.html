@@ -5,16 +5,25 @@
   <style>
     body { font-family: sans-serif; background: #111; color: #fff; text-align: center; padding: 40px; }
     h1 { color: #4ade80; }
-    button { padding: 10px 20px; font-size: 16px; }
+    button { padding: 10px 20px; font-size: 16px; margin: 5px; }
+    #angka { font-size: 48px; margin: 20px; }
   </style>
 </head>
 <body>
   <h1>Halo, dunia!</h1>
   <p>Ini halaman web pertama gue.</p>
-  <button onclick="ubah()">Klik saya</button>
+  <div id="angka">0</div>
+  <button onclick="tambah()">Tambah</button>
+  <button onclick="reset()">Reset</button>
   <script>
-    function ubah() {
-      document.querySelector("h1").textContent = "JavaScript jalan!";
+    let hitung = 0;
+    function tambah() {
+      hitung = hitung + 1;
+      document.getElementById("angka").textContent = hitung;
+    }
+    function reset() {
+      hitung = 0;
+      document.getElementById("angka").textContent = hitung;
     }
   </script>
 </body>
