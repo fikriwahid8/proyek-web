@@ -14,16 +14,28 @@
   <p>Ini halaman web pertama gue.</p>
   <div id="angka">0</div>
   <button onclick="tambah()">Tambah</button>
+  <button onclick="kurang()">Kurang</button>
   <button onclick="reset()">Reset</button>
   <script>
     let hitung = 0;
+    function tampil() {
+      const el = document.getElementById("angka");
+      el.textContent = hitung;
+      el.style.color = hitung > 10 ? "red" : "white";
+    }
     function tambah() {
       hitung = hitung + 1;
-      document.getElementById("angka").textContent = hitung;
+      tampil();
+    }
+    function kurang() {
+      if (hitung > 0) {
+        hitung = hitung - 1;
+      }
+      tampil();
     }
     function reset() {
       hitung = 0;
-      document.getElementById("angka").textContent = hitung;
+      tampil();
     }
   </script>
 </body>
