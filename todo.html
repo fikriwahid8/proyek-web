@@ -18,8 +18,9 @@
   <button onclick="tambah()">Tambah</button>
   <ul id="daftar"></ul>
   <script>
-    let tugas = [];
+    let tugas = JSON.parse(localStorage.getItem("tugas")) || [];
     function tampil() {
+      localStorage.setItem("tugas", JSON.stringify(tugas));
       const daftar = document.getElementById("daftar");
       daftar.innerHTML = "";
       for (let i = 0; i < tugas.length; i++) {
@@ -43,6 +44,7 @@
       tugas.splice(i, 1);
       tampil();
     }
+    tampil();
   </script>
 </body>
 </html>
